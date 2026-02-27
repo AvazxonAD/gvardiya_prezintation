@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="uz">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: { inter: ["Inter", "sans-serif"] },
+            colors: {
+              navy: "#0A1628",
+              card: "#111827",
+              border: "#1E293B",
+              gold: "#C5A572",
+              "gold-dim": "rgba(197,165,114,0.12)",
+              "gold-border": "rgba(197,165,114,0.2)",
+              warn: "#D45050",
+              "warn-bg": "rgba(200,50,50,0.08)",
+              "warn-border": "rgba(200,70,70,0.25)",
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body class="w-[1920px] h-[1080px] overflow-hidden bg-navy font-inter text-white flex flex-col">
+    <!-- Top gold accent bar -->
+    <div class="h-1 w-full bg-gold flex-shrink-0"></div>
+
+    <!-- Header -->
+    <div class="px-20 pt-10 pb-0 flex-shrink-0">
+      <div class="flex items-start justify-between mb-2">
+        <h1 class="text-5xl font-extrabold tracking-[4px]"><span class="text-gold mr-3">&#9670;</span>TADBIR-HISOB PLATFORMASI</h1>
+        <div class="bg-warn-bg border border-warn-border text-[#E07070] text-lg font-bold tracking-[2px] uppercase px-6 py-2 rounded">Muammolar</div>
+      </div>
+      <p class="text-lg text-white/40 tracking-wide mt-2">
+        O'zbekiston Respublikasi Milliy gvardiyasi ommaviy tadbirlarini moliyaviy boshqarish va nazorat qilish tizimi
+      </p>
+    </div>
+
+    <!-- Divider -->
+    <div class="mx-20 mt-4 h-px bg-gold-border flex-shrink-0"></div>
+
+    <!-- Section title + Objective row -->
+    <div class="flex items-stretch gap-7 px-20 mt-4 flex-shrink-0 mb-3">
+      <!-- Left: section title -->
+      <div class="flex items-center gap-3 flex-shrink-0">
+        <div class="w-9 h-[3px] bg-gold rounded-sm"></div>
+        <h2 class="text-2xl font-bold whitespace-nowrap tracking-tight">Ommaviy tadbirlarni boshqarishdagi muammolar</h2>
+      </div>
+      <!-- Right: Objective box -->
+      <div class="flex-1 bg-card border border-border border-l-[3px] border-l-gold rounded-r-lg px-6 py-4 flex flex-col justify-center">
+        <span class="text-base font-bold tracking-widest text-gold uppercase mb-1">Maqsad</span>
+        <p class="text-base text-white/60 leading-relaxed">
+          Ommaviy tadbirlar va ular bilan bog'liq shartnomalarni avtomatik ravishda boshqarish va hisoblash jarayonlarini avtomatlashtirish uchun mo'ljallangan
+          yagona tizimni yaratish.
+        </p>
+      </div>
+    </div>
+
+    <!-- Row 1: 3 cards -->
+    <div class="grid grid-cols-3 gap-3 px-20 mt-3 flex-shrink-0">
+      <!-- Card 01 -->
+      <div class="bg-[#111827] border border-border border-l-[4px] border-l-red-500 rounded-xl p-5 relative overflow-hidden">
+        <div class="absolute bottom-0 left-0 right-0 h-[2px] bg-[#C5A572]"></div>
+        <div class="flex items-center gap-3 mb-1">
+          <div class="w-10 h-10 rounded-lg bg-[#1a2332] flex items-center justify-center border border-border/50 flex-shrink-0">
+            <i data-lucide="unlink" class="w-[22px] h-[22px] text-[#C5A572]"></i>
+          </div>
+          <h3 class="text-2xl font-bold text-white leading-tight flex-1">Markazlashmagan tizim</h3>
+          <span class="w-7 h-7 bg-[#C5A572] rounded-full flex items-center justify-center text-xs font-bold text-navy flex-shrink-0">01</span>
+        </div>
+        <p class="text-[17px] text-gray-400 leading-relaxed ml-[52px]">
+          Viloyatlar shartnoma va hisobotlarni alohida (asosan Excel) yuritadi. Yagona standart va markazlashgan platforma yo'qligi sababli respublika miqyosida
+          umumiy moliyaviy manzarani shakllantirish qiyinlashadi.
+        </p>
+      </div>
+
+      <!-- Card 02 -->
+      <div class="bg-[#111827] border border-border border-l-[4px] border-l-red-500 rounded-xl p-5 relative overflow-hidden">
+        <div class="absolute bottom-0 left-0 right-0 h-[2px] bg-[#C5A572]"></div>
+        <div class="flex items-center gap-3 mb-1">
+          <div class="w-10 h-10 rounded-lg bg-[#1a2332] flex items-center justify-center border border-border/50 flex-shrink-0">
+            <i data-lucide="user-x" class="w-[22px] h-[22px] text-[#C5A572]"></i>
+          </div>
+          <h3 class="text-2xl font-bold text-white leading-tight flex-1">Inson omili va qo'lda yuritish</h3>
+          <span class="w-7 h-7 bg-[#C5A572] rounded-full flex items-center justify-center text-xs font-bold text-navy flex-shrink-0">02</span>
+        </div>
+        <p class="text-[17px] text-gray-400 leading-relaxed ml-[52px]">
+          Shartnoma va xarajat ma'lumotlari qo'lda yoki alohida hujjatlarda yuritiladi. Bu texnik xatolik xavfini oshiradi. Xodimlarning qaysi tadbirlarda
+          qatnashgani va ularga ajratiladigan rag'batlantirish miqdorini tezkor aniqlash murakkablashadi.
+        </p>
+      </div>
+
+      <!-- Card 03 -->
+      <div class="bg-[#111827] border border-border border-l-[4px] border-l-yellow-500 rounded-xl p-5 relative overflow-hidden">
+        <div class="absolute bottom-0 left-0 right-0 h-[2px] bg-[#C5A572]"></div>
+        <div class="flex items-center gap-3 mb-1">
+          <div class="w-10 h-10 rounded-lg bg-[#1a2332] flex items-center justify-center border border-border/50 flex-shrink-0">
+            <i data-lucide="clock" class="w-[22px] h-[22px] text-[#C5A572]"></i>
+          </div>
+          <h3 class="text-2xl font-bold text-white leading-tight flex-1">Real vaqt nazorati yo'qligi</h3>
+          <span class="w-7 h-7 bg-[#C5A572] rounded-full flex items-center justify-center text-xs font-bold text-navy flex-shrink-0">03</span>
+        </div>
+        <p class="text-[17px] text-gray-400 leading-relaxed ml-[52px]">
+          Hududlardan hisobotlarni yig'ish va umumlashtirish vaqt talab qiladi. Yagona platforma mavjud emasligi sababli tezkor boshqaruv qarorlarini qabul
+          qilish imkoniyati cheklanadi.
+        </p>
+      </div>
+    </div>
+
+    <!-- Row 2: 2 cards centered, same width as top row cards -->
+    <div class="flex justify-center gap-3 px-20 mt-3 flex-shrink-0">
+      <!-- Card 04 -->
+      <div class="w-[calc((100%-1.5rem)/3)] bg-[#0F1D2E] border border-border border-l-[4px] border-l-orange-500 rounded-xl p-5 relative overflow-hidden">
+        <div class="absolute bottom-0 left-0 right-0 h-[2px] bg-[#C5A572]"></div>
+        <div class="flex items-center gap-3 mb-1">
+          <div class="w-10 h-10 rounded-lg bg-[#1a2332] flex items-center justify-center border border-border/50 flex-shrink-0">
+            <i data-lucide="shuffle" class="w-[22px] h-[22px] text-[#C5A572]"></i>
+          </div>
+          <h3 class="text-2xl font-bold text-white leading-tight flex-1">Ma'lumotlar nomuvofiqligi</h3>
+          <span class="w-7 h-7 bg-[#C5A572] rounded-full flex items-center justify-center text-xs font-bold text-navy flex-shrink-0">04</span>
+        </div>
+        <p class="text-[17px] text-gray-400 leading-relaxed ml-[52px]">
+          Tadbirda ishtirok etgan xodimlar va moliyaviy hisob-kitob ma'lumotlari o'rtasida tafovutlar yuzaga kelishi mumkin. Xodimning oy davomida qatnashgan
+          tadbirlari va ajratilgan mablag'larini tezkor tekshirish qiyin.
+        </p>
+      </div>
+      <!-- Card 05 -->
+      <div class="w-[calc((100%-1.5rem)/3)] bg-[#0F1D2E] border border-border border-l-[4px] border-l-yellow-500 rounded-xl p-5 relative overflow-hidden">
+        <div class="absolute bottom-0 left-0 right-0 h-[2px] bg-[#C5A572]"></div>
+        <div class="flex items-center gap-3 mb-1">
+          <div class="w-10 h-10 rounded-lg bg-[#1a2332] flex items-center justify-center border border-border/50 flex-shrink-0">
+            <i data-lucide="eye-off" class="w-[22px] h-[22px] text-[#C5A572]"></i>
+          </div>
+          <h3 class="text-2xl font-bold text-white leading-tight flex-1">Shaffoflik va nazorat yetishmasligi</h3>
+          <span class="w-7 h-7 bg-[#C5A572] rounded-full flex items-center justify-center text-xs font-bold text-navy flex-shrink-0">05</span>
+        </div>
+        <p class="text-[17px] text-gray-400 leading-relaxed ml-[52px]">
+          Mablag'lar harakati asosan yakuniy hisobotda aks etadi. Real vaqt rejimida tushum va xarajatlar bo'yicha tezkor ma'lumot olish imkoniyati mavjud emas.
+        </p>
+      </div>
+    </div>
+
+    <!-- Warning / Result box -->
+    <div class="mx-20 flex items-center gap-6 bg-red-900/20 border border-red-900/30 border-l-[4px] border-l-red-500 rounded-r-xl p-4 mt-14 flex-shrink-0">
+      <div class="w-12 h-12 rounded-full bg-red-500/10 flex items-center justify-center flex-shrink-0">
+        <i data-lucide="triangle-alert" class="w-[28px] h-[28px] text-red-500"></i>
+      </div>
+      <p class="text-xl text-white/90 leading-relaxed font-semibold">
+        <strong class="text-red-500 font-bold uppercase tracking-wider mr-2 text-2xl">Natija:</strong>
+        Moliyaviy intizom susayadi, mablag'lardan samarali foydalanish kamayadi va korrupsion xavflar ortadi.
+      </p>
+    </div>
+
+    <!-- Footer -->
+    <div class="h-10 bg-black/25 flex items-center justify-between px-20 mt-3 flex-shrink-0">
+      <span class="text-[11px] text-white/25 tracking-[1px]">TADBIR-HISOB PLATFORMASI — MUAMMOLAR TAHLILI</span>
+      <span class="text-[11px] text-gold font-semibold tracking-[1px]">01 / 02</span>
+    </div>
+
+    <!-- Initialize Lucide icons -->
+    <script>
+      lucide.createIcons();
+    </script>
+  </body>
+</html>
