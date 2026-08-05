@@ -1,0 +1,68 @@
+/* ==========================================================================
+   Dizayn tokenlari — prezintation/slide1.html va slide2.html dan meros
+   ========================================================================== */
+
+:root {
+  /* Sirtlar */
+  --navy: #0a1628;
+  --navy-deep: #060f1c;
+  --surface: #111827;
+  --surface-2: #0f1d2e;
+  --surface-3: #1a2332;
+  --border: #1e293b;
+  --border-soft: rgba(255, 255, 255, 0.08);
+  --glass: rgba(30, 41, 59, 0.42);
+
+  /* Brend */
+  --gold: #c5a572;
+  --gold-dim: rgba(197, 165, 114, 0.12);
+  --gold-border: rgba(197, 165, 114, 0.22);
+
+  /* Semantik — appeal_types enum ga qat'iy bog'langan */
+  --st-new: #38bdf8; /* new          */
+  --st-review: #f59e0b; /* reviewing    */
+  --st-reject: #f43f5e; /* rejected     */
+  --st-sent: #27ae60; /* contract_sent */
+
+  --danger: #d45050;
+  --danger-bg: rgba(200, 50, 50, 0.08);
+  --danger-border: rgba(200, 70, 70, 0.28);
+
+  /* Bugungi holatni ko'rsatish uchun — qizil emas, muloyimroq kehribar rang.
+     Davlat idorasi oldida qizil «ayblov» kabi o'qiladi. */
+  --warn: #e3a857;
+  --warn-soft: #f0c489;
+  --warn-bg: rgba(227, 168, 87, 0.1);
+  --warn-border: rgba(227, 168, 87, 0.3);
+  --success: #27ae60;
+  --success-bright: #2ecc71;
+  --info: #38bdf8;
+
+  /* Matn */
+  --text: #f8fafc;
+  --text-2: #94a3b8;
+  --text-3: rgba(255, 255, 255, 0.42);
+  --text-4: rgba(255, 255, 255, 0.22);
+
+  /* Slayd geometriyasi — 16:9, 1920x1080 asosda */
+  --slide-w: 1920;
+  --slide-h: 1080;
+
+  /* Bir birlik = slayd kengligining 1/1920 qismi.
+     Barcha o'lchamlar shunga bog'langani uchun deck har qanday ekranda
+     transform:scale() hacksiz bir xil ko'rinadi. */
+  --u: calc(var(--stage-w, 1920px) / 1920);
+
+  --pad-x: calc(80 * var(--u));
+
+  --r-sm: calc(8 * var(--u));
+  --r-md: calc(12 * var(--u));
+  --r-lg: calc(16 * var(--u));
+  --r-xl: calc(24 * var(--u));
+
+  --font: "Inter", "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+  --mono: "JetBrains Mono", "Cascadia Mono", Consolas, "Courier New", monospace;
+
+  --ease: cubic-bezier(0.4, 0, 0.2, 1);
+}

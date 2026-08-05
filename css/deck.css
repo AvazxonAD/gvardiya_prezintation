@@ -1,0 +1,322 @@
+/* ==========================================================================
+   Deck karkasi — slayd sahnasi, navigatsiya, overview
+   ========================================================================== */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: var(--navy-deep);
+  font-family: var(--font);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* --- Sahna: 16:9 nisbatni saqlagan holda ekranga sig'adi ------------------ */
+#stage {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  aspect-ratio: 16 / 9;
+  max-width: 100vw;
+  max-height: 100vh;
+  overflow: hidden;
+  background: var(--navy);
+  box-shadow: 0 0 calc(80 * var(--u)) rgba(0, 0, 0, 0.6);
+}
+
+/* --- Slayd --------------------------------------------------------------- */
+.slide {
+  position: absolute;
+  inset: 0;
+  display: none;
+  flex-direction: column;
+  padding: 0;
+  background: var(--navy);
+}
+
+.slide.is-active {
+  display: flex;
+  animation: slideIn 0.42s var(--ease);
+}
+
+.slide.is-back.is-active {
+  animation: slideInBack 0.42s var(--ease);
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(calc(46 * var(--u)));
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes slideInBack {
+  from {
+    opacity: 0;
+    transform: translateX(calc(-46 * var(--u)));
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Chop etish / eksport rejimida animatsiya yo'q */
+body.is-print .slide.is-active,
+body.no-anim .slide.is-active {
+  animation: none !important;
+}
+
+/* Eksport rejimida navigatsiya chromasi ko'rinmaydi — faqat toza slayd */
+body.is-print #hint,
+body.is-print #nav,
+body.is-print #progress,
+body.is-print #lang {
+  display: none !important;
+}
+
+/* --- Slayd ichki tuzilmasi ----------------------------------------------- */
+.slide__rule {
+  height: calc(4 * var(--u));
+  background: var(--gold);
+  flex-shrink: 0;
+}
+
+.slide__foot {
+  flex-shrink: 0;
+  height: calc(46 * var(--u));
+  background: rgba(0, 0, 0, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--pad-x);
+  font-size: calc(13 * var(--u));
+  letter-spacing: calc(1.2 * var(--u));
+}
+
+.slide__foot-l {
+  color: var(--text-4);
+  text-transform: uppercase;
+}
+
+.slide__foot-r {
+  color: var(--gold);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+/* --- Progress bar -------------------------------------------------------- */
+#progress {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: calc(3 * var(--u));
+  background: var(--gold);
+  z-index: 40;
+  transition: width 0.4s var(--ease);
+  pointer-events: none;
+}
+
+/* --- Navigatsiya --------------------------------------------------------- */
+#nav {
+  position: absolute;
+  right: calc(26 * var(--u));
+  bottom: calc(62 * var(--u));
+  display: flex;
+  align-items: center;
+  gap: calc(8 * var(--u));
+  z-index: 45;
+  opacity: 0;
+  transition: opacity 0.3s var(--ease);
+}
+
+#stage:hover #nav,
+#nav:focus-within {
+  opacity: 1;
+}
+
+.nav-btn {
+  width: calc(38 * var(--u));
+  height: calc(38 * var(--u));
+  border-radius: 50%;
+  border: 1px solid var(--border-soft);
+  background: rgba(15, 29, 46, 0.85);
+  color: var(--text-2);
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  transition: all 0.2s var(--ease);
+  backdrop-filter: blur(8px);
+}
+
+.nav-btn:hover:not(:disabled) {
+  border-color: var(--gold-border);
+  color: var(--gold);
+  transform: translateY(calc(-2 * var(--u)));
+}
+
+.nav-btn:disabled {
+  opacity: 0.25;
+  cursor: default;
+}
+
+.nav-btn svg {
+  width: calc(17 * var(--u));
+  height: calc(17 * var(--u));
+}
+
+/* --- Til almashtirgich --------------------------------------------------- */
+#lang {
+  position: absolute;
+  top: calc(20 * var(--u));
+  right: calc(24 * var(--u));
+  z-index: 50;
+  display: flex;
+  border: 1px solid var(--border-soft);
+  border-radius: 999px;
+  overflow: hidden;
+  background: rgba(10, 22, 40, 0.8);
+  backdrop-filter: blur(8px);
+  opacity: 0.2;
+  transition: opacity 0.3s var(--ease);
+}
+
+#stage:hover #lang,
+#lang:hover {
+  opacity: 1;
+}
+
+.lang-btn {
+  padding: calc(5 * var(--u)) calc(14 * var(--u));
+  font-size: calc(12 * var(--u));
+  font-weight: 700;
+  letter-spacing: calc(1 * var(--u));
+  background: none;
+  border: none;
+  color: var(--text-3);
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.2s var(--ease);
+}
+
+.lang-btn.is-on {
+  background: var(--gold);
+  color: var(--navy);
+}
+
+/* --- Overview (Esc) ------------------------------------------------------ */
+#overview {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: rgba(3, 8, 18, 0.94);
+  backdrop-filter: blur(10px);
+  display: none;
+  padding: 3vh 3vw;
+  overflow-y: auto;
+}
+
+#overview.is-open {
+  display: block;
+}
+
+#overview h3 {
+  font-size: 1rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1.4rem;
+  text-align: center;
+}
+
+.ov-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+  gap: 14px;
+}
+
+.ov-item {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface);
+  padding: 14px;
+  cursor: pointer;
+  transition: all 0.2s var(--ease);
+  text-align: left;
+  font-family: inherit;
+  color: var(--text);
+  min-height: 96px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.ov-item:hover {
+  border-color: var(--gold-border);
+  transform: translateY(-3px);
+}
+
+.ov-item.is-current {
+  border-color: var(--gold);
+  background: var(--gold-dim);
+}
+
+.ov-num {
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: var(--gold);
+  letter-spacing: 1px;
+}
+
+.ov-title {
+  font-size: 0.82rem;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+/* --- Yordam qatori (birinchi ochilganda) --------------------------------- */
+#hint {
+  position: absolute;
+  left: 50%;
+  top: calc(16 * var(--u));
+  transform: translateX(-50%);
+  z-index: 46;
+  display: flex;
+  gap: calc(16 * var(--u));
+  padding: calc(9 * var(--u)) calc(18 * var(--u));
+  border-radius: 999px;
+  background: rgba(10, 22, 40, 0.9);
+  border: 1px solid var(--border-soft);
+  backdrop-filter: blur(8px);
+  font-size: calc(12.5 * var(--u));
+  color: var(--text-3);
+  transition: opacity 0.5s var(--ease);
+}
+
+#hint.is-hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+#hint kbd {
+  font-family: var(--mono);
+  font-size: calc(11 * var(--u));
+  padding: calc(2 * var(--u)) calc(7 * var(--u));
+  border-radius: calc(4 * var(--u));
+  background: var(--surface-3);
+  border: 1px solid var(--border);
+  color: var(--gold);
+  margin-right: calc(5 * var(--u));
+}
