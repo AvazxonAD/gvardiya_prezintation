@@ -1,17 +1,11 @@
 /* ==========================================================================
-   Slayd komponentlari — katta tipografiya
-   ========================================================================== */
+   Slayd komponentlari — katta tipografiya, ochiq mavzu
 
-/* --- Embed slayd (tashqi HTML iframe: prezintation slide1/slide2) --------- */
-.embed {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  border: 0;
-  background: var(--navy);
-  display: block;
-}
+   Ochiq fonga o'tishda ikki qoida:
+     1. Karta chegarasi yolg'iz yetarli emas — yumshoq soya qo'shiladi.
+     2. Gradient matn (h1 em) ikkala uchida ham to'q bo'lishi shart,
+        aks holda oq fonda yo'qoladi. Katta sarlavha uchun 3:1 kifoya.
+   ========================================================================== */
 
 /* --- Live slayd: ishlab turgan modullar (3 + 2 markazda) ------------------ */
 .live-sub {
@@ -36,6 +30,7 @@
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--r-lg);
+  box-shadow: var(--shadow-md);
   padding: calc(24 * var(--u)) calc(28 * var(--u));
   display: flex;
   align-items: center;
@@ -61,9 +56,9 @@
   display: grid;
   place-items: center;
   font-size: calc(27 * var(--u));
-  background: rgba(39, 174, 96, 0.1);
-  border: 1px solid rgba(39, 174, 96, 0.32);
-  color: var(--success-bright);
+  background: var(--success-bg);
+  border: 1px solid var(--success-border);
+  color: var(--success);
   flex-shrink: 0;
 }
 
@@ -94,6 +89,8 @@
   gap: calc(32 * var(--u));
 }
 
+/* Burchakdagi yumshoq tus — qog'oz sifatida o'qiladi.
+   Ochiq fonda alfa juda past bo'lishi kerak, aks holda kir dog' effekti. */
 .big__glow {
   position: absolute;
   width: calc(900 * var(--u));
@@ -106,9 +103,9 @@
   z-index: 0;
 }
 
-.big--bad .big__glow { background: rgba(227, 168, 87, 0.1); }
-.big--good .big__glow { background: rgba(39, 174, 96, 0.11); }
-.thanks .big__glow { background: rgba(197, 165, 114, 0.14); }
+.big--bad .big__glow { background: rgba(180, 83, 9, 0.07); }
+.big--good .big__glow { background: rgba(21, 128, 61, 0.06); }
+.thanks .big__glow { background: rgba(197, 165, 114, 0.16); }
 
 /* :not(.big__glow) shart — aks holda bu qoida glow'ning absolute holatini
    bekor qilib yuboradi va u layoutda joy egallab qoladi. */
@@ -127,7 +124,7 @@
   font-weight: 800;
   letter-spacing: calc(7 * var(--u));
   text-transform: uppercase;
-  color: var(--gold);
+  color: var(--gold-ink);
   flex-shrink: 0;
 }
 
@@ -154,23 +151,25 @@
   max-width: calc(1660 * var(--u));
 }
 
+/* Gradientning ikkala uchi ham oq fonda 3:1 dan yuqori — katta sarlavha
+   uchun WCAG AA shartini bajaradi. */
 .big h1 em {
   font-style: normal;
-  background: linear-gradient(100deg, var(--gold), #f0dcb4);
+  background: linear-gradient(100deg, #7a5f33, #a8823f);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 }
 
 .big--bad h1 em {
-  background: linear-gradient(100deg, var(--warn), var(--warn-soft));
+  background: linear-gradient(100deg, var(--warn-soft), var(--warn));
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 }
 
 .big--good h1 em {
-  background: linear-gradient(100deg, #4ade80, #a7f3d0);
+  background: linear-gradient(100deg, #15803d, #22a35a);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -189,14 +188,18 @@
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--r-xl);
+  box-shadow: var(--shadow-md);
   padding: calc(34 * var(--u)) calc(32 * var(--u));
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  /* flex-start — markazlashtirilsa, matn uzunligi har xil bo'lgani uchun
+     uch kartochkaning ikonka qatori turli sathda qolib ketadi. */
+  justify-content: flex-start;
   gap: calc(18 * var(--u));
   position: relative;
   overflow: hidden;
 }
+
 
 .block::after {
   content: "";
@@ -230,13 +233,13 @@
 .big--bad .block__ico {
   background: var(--warn-bg);
   border: 1px solid var(--warn-border);
-  color: var(--warn-soft);
+  color: var(--warn);
 }
 
 .big--good .block__ico {
-  background: rgba(39, 174, 96, 0.1);
-  border: 1px solid rgba(39, 174, 96, 0.32);
-  color: var(--success-bright);
+  background: var(--success-bg);
+  border: 1px solid var(--success-border);
+  color: var(--success);
 }
 
 .block__tag {
@@ -251,7 +254,7 @@
   margin-left: auto;
   font-size: calc(44 * var(--u));
   font-weight: 800;
-  color: rgba(255, 255, 255, 0.07);
+  color: var(--ghost);
   line-height: 1;
 }
 
@@ -288,7 +291,7 @@
 .punch span {
   font-size: calc(36 * var(--u));
   font-weight: 500;
-  color: var(--gold);
+  color: var(--gold-ink);
   letter-spacing: calc(-0.5 * var(--u));
 }
 
@@ -306,7 +309,7 @@
   font-size: calc(22 * var(--u));
   letter-spacing: calc(4 * var(--u));
   text-transform: uppercase;
-  color: var(--gold);
+  color: var(--gold-ink);
 }
 
 .punch--center span {
@@ -339,9 +342,10 @@
    ikonka va sarlavha kartochkadan kartochkaga siljib ketadi. */
 .step {
   flex: 1;
-  background: linear-gradient(180deg, rgba(39, 174, 96, 0.06), var(--surface));
-  border: 1px solid rgba(39, 174, 96, 0.28);
+  background: linear-gradient(180deg, rgba(21, 128, 61, 0.05), var(--surface) 55%);
+  border: 1px solid var(--success-border);
   border-radius: var(--r-xl);
+  box-shadow: var(--shadow-md);
   padding: calc(34 * var(--u)) calc(24 * var(--u)) calc(32 * var(--u));
   display: flex;
   flex-direction: column;
@@ -357,7 +361,7 @@
   right: calc(20 * var(--u));
   font-size: calc(52 * var(--u));
   font-weight: 800;
-  color: rgba(255, 255, 255, 0.06);
+  color: var(--ghost);
   line-height: 1;
 }
 
@@ -368,9 +372,9 @@
   display: grid;
   place-items: center;
   font-size: calc(28 * var(--u));
-  background: rgba(39, 174, 96, 0.12);
-  border: 1px solid rgba(39, 174, 96, 0.32);
-  color: var(--success-bright);
+  background: var(--success-bg);
+  border: 1px solid var(--success-border);
+  color: var(--success);
   flex-shrink: 0;
 }
 
@@ -380,7 +384,7 @@
   font-weight: 800;
   letter-spacing: calc(1.8 * var(--u));
   text-transform: uppercase;
-  color: var(--text-4);
+  color: var(--text-3);
   margin-bottom: calc(-7 * var(--u));
 }
 
@@ -407,7 +411,7 @@
   place-items: center;
   height: calc(60 * var(--u));
   margin-top: calc(34 * var(--u));
-  color: rgba(39, 174, 96, 0.42);
+  color: rgba(21, 128, 61, 0.5);
   font-size: calc(26 * var(--u));
   flex-shrink: 0;
 }
@@ -421,9 +425,9 @@
   gap: calc(16 * var(--u));
   padding: calc(16 * var(--u));
   border-radius: 999px;
-  border: 1px dashed var(--gold-border);
+  border: 1px dashed var(--gold);
   background: var(--gold-dim);
-  color: var(--gold);
+  color: var(--gold-ink);
   font-size: calc(25 * var(--u));
   font-weight: 600;
 }
@@ -446,7 +450,7 @@
   font-weight: 800;
   line-height: 1;
   letter-spacing: calc(-5 * var(--u));
-  background: linear-gradient(100deg, var(--gold), #f5e6c8 60%, var(--gold));
+  background: linear-gradient(100deg, #7a5f33, #a8823f 60%, #7a5f33);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -472,7 +476,7 @@
   font-size: calc(15 * var(--u));
   letter-spacing: calc(2.2 * var(--u));
   text-transform: uppercase;
-  color: var(--text-4);
+  color: var(--text-3);
   margin-bottom: calc(10 * var(--u));
 }
 
@@ -503,24 +507,24 @@
 
 .pill--new {
   color: var(--st-new);
-  background: rgba(56, 189, 248, 0.12);
-  border: 1px solid rgba(56, 189, 248, 0.3);
+  background: rgba(3, 105, 161, 0.09);
+  border: 1px solid rgba(3, 105, 161, 0.28);
 }
 
 .pill--reviewing {
   color: var(--st-review);
-  background: rgba(245, 158, 11, 0.12);
-  border: 1px solid rgba(245, 158, 11, 0.3);
+  background: rgba(180, 83, 9, 0.09);
+  border: 1px solid rgba(180, 83, 9, 0.28);
 }
 
 .pill--rejected {
   color: var(--st-reject);
-  background: rgba(244, 63, 94, 0.12);
-  border: 1px solid rgba(244, 63, 94, 0.3);
+  background: rgba(190, 18, 60, 0.08);
+  border: 1px solid rgba(190, 18, 60, 0.26);
 }
 
 .pill--contract_sent {
   color: var(--st-sent);
-  background: rgba(39, 174, 96, 0.14);
-  border: 1px solid rgba(39, 174, 96, 0.34);
+  background: rgba(21, 128, 61, 0.09);
+  border: 1px solid rgba(21, 128, 61, 0.28);
 }

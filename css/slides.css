@@ -1,0 +1,1381 @@
+/* ==========================================================================
+   01 Muammolar  va  02 Platforma  slaydlari
+
+   Ilgari bu ikkisi alohida HTML (slide1/slide2) bo'lib, Tailwind CDN va
+   qorong'i palitrada edi. Endi ular ham deck tokenlaridan oziqlanadi.
+
+   Grafik obyektlar (xarita, doughnut) uchun rang tanlashda oq fonda
+   kamida 3:1 kontrast shart — shuning uchun och oltin (#c5a572) o'rniga
+   to'qroq #b08a4a ishlatiladi.
+   ========================================================================== */
+
+/* ========================================================  01 SARLAVHA  === */
+
+.title {
+  flex: 1;
+  min-height: 0;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: calc(44 * var(--u));
+  padding: calc(40 * var(--u)) var(--pad-x) calc(34 * var(--u));
+}
+
+.title > *:not(.big__glow) {
+  position: relative;
+  z-index: 1;
+}
+
+.title .big__glow {
+  background: rgba(197, 165, 114, 0.18);
+}
+
+.title__mark h1 {
+  font-size: calc(150 * var(--u));
+  font-weight: 800;
+  line-height: 0.98;
+  letter-spacing: calc(-4 * var(--u));
+  margin-top: calc(14 * var(--u));
+  background: linear-gradient(100deg, #7a5f33, #a8823f 55%, #7a5f33);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.title__sub {
+  font-size: calc(44 * var(--u));
+  font-weight: 300;
+  color: var(--text-2);
+  letter-spacing: calc(1 * var(--u));
+  margin-top: calc(2 * var(--u));
+}
+
+.title__lead {
+  font-size: calc(26 * var(--u));
+  line-height: 1.45;
+  color: var(--text-3);
+  max-width: calc(1180 * var(--u));
+  margin-top: calc(18 * var(--u));
+}
+
+.tfacts {
+  display: flex;
+  gap: calc(64 * var(--u));
+  margin-top: calc(34 * var(--u));
+  padding-top: calc(26 * var(--u));
+  border-top: 1px solid var(--gold-border);
+}
+
+.tfact b {
+  display: block;
+  font-size: calc(46 * var(--u));
+  font-weight: 800;
+  line-height: 1;
+  color: var(--text);
+  font-variant-numeric: tabular-nums;
+}
+
+.tfact span {
+  display: block;
+  margin-top: calc(7 * var(--u));
+  font-size: calc(15 * var(--u));
+  letter-spacing: calc(2.2 * var(--u));
+  text-transform: uppercase;
+  color: var(--text-3);
+}
+
+/* ======================================================  02 MUAMMOLAR  === */
+
+.goal {
+  flex-shrink: 0;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: calc(5 * var(--u)) solid var(--gold);
+  border-radius: var(--r-md);
+  box-shadow: var(--shadow-sm);
+  padding: calc(18 * var(--u)) calc(28 * var(--u));
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: calc(4 * var(--u));
+}
+
+.goal span {
+  font-size: calc(17 * var(--u));
+  font-weight: 800;
+  letter-spacing: calc(3.4 * var(--u));
+  text-transform: uppercase;
+  color: var(--gold-ink);
+}
+
+.goal p {
+  font-size: calc(21 * var(--u));
+  line-height: 1.45;
+  color: var(--text-2);
+}
+
+/* Muammolar slaydi zich — standart .big chekinishlari biroz kichraytiriladi */
+.slide[data-type="problems"] .big {
+  padding-top: calc(42 * var(--u));
+  gap: calc(24 * var(--u));
+}
+
+/* 5 kartochka: 3 + 2 (ikkinchi qator markazda) */
+.pcards {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  /* center — aks holda qatorlar bo'sh joyni o'ziga tortib, kartochkalar
+     ichida katta quruq maydon qoladi. */
+  align-content: center;
+  gap: calc(20 * var(--u));
+}
+
+.pcard {
+  flex: 1 1 calc((100% - 2 * 20 * var(--u)) / 3);
+  max-width: calc((100% - 2 * 20 * var(--u)) / 3);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-md);
+  padding: calc(22 * var(--u)) calc(26 * var(--u));
+  display: flex;
+  flex-direction: column;
+  gap: calc(12 * var(--u));
+  position: relative;
+  overflow: hidden;
+}
+
+.pcard::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: calc(3 * var(--u));
+  background: var(--gold);
+}
+
+.pcard__top {
+  display: flex;
+  align-items: center;
+  gap: calc(15 * var(--u));
+  flex-shrink: 0;
+}
+
+.pcard__ico {
+  width: calc(50 * var(--u));
+  height: calc(50 * var(--u));
+  border-radius: var(--r-md);
+  display: grid;
+  place-items: center;
+  font-size: calc(25 * var(--u));
+  background: var(--gold-dim);
+  border: 1px solid var(--gold-border);
+  color: var(--gold-ink);
+  flex-shrink: 0;
+}
+
+.pcard__top h3 {
+  flex: 1;
+  font-size: calc(26 * var(--u));
+  font-weight: 700;
+  line-height: 1.18;
+  letter-spacing: calc(-0.3 * var(--u));
+}
+
+.pcard__n {
+  flex-shrink: 0;
+  width: calc(36 * var(--u));
+  height: calc(36 * var(--u));
+  border-radius: 50%;
+  background: var(--gold);
+  color: var(--on-gold);
+  display: grid;
+  place-items: center;
+  font-size: calc(15 * var(--u));
+  font-weight: 800;
+}
+
+.pcard p {
+  font-size: calc(19 * var(--u));
+  line-height: 1.48;
+  color: var(--text-2);
+}
+
+/* Yakuniy natija bandi */
+.result {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: calc(22 * var(--u));
+  padding: calc(18 * var(--u)) calc(28 * var(--u));
+  border-radius: var(--r-lg);
+  background: var(--danger-bg);
+  border: 1px solid var(--danger-border);
+  border-left: calc(5 * var(--u)) solid var(--danger);
+}
+
+.result__ico {
+  width: calc(54 * var(--u));
+  height: calc(54 * var(--u));
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: calc(28 * var(--u));
+  background: var(--surface);
+  border: 1px solid var(--danger-border);
+  color: var(--danger);
+  flex-shrink: 0;
+}
+
+.result p {
+  font-size: calc(25 * var(--u));
+  line-height: 1.4;
+  font-weight: 500;
+}
+
+.result b {
+  color: var(--danger);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: calc(1 * var(--u));
+  margin-right: calc(4 * var(--u));
+}
+
+/* ==========================================  05 TAQSIMOT (FVV qo'shildi) == */
+
+.pay,
+.flw,
+.rmw {
+  gap: calc(22 * var(--u));
+  padding-top: calc(44 * var(--u));
+}
+
+.pay__lead {
+  font-size: calc(24 * var(--u));
+  line-height: 1.45;
+  color: var(--text-2);
+  max-width: calc(1560 * var(--u));
+  flex-shrink: 0;
+}
+
+/* Qator kontentiga qarab o'lchanadi (flex:0 1 auto) va qolgan bo'sh joyda
+   `margin:auto 0` bilan markazlashadi. Shundagina align-items:stretch manba
+   va yo'nalish kartochkalarini bir balandlikka keltiradi — `flex:1` bo'lsa
+   ular butun slayd balandligiga cho'zilib, ichida quruq maydon qolardi. */
+.pay__row {
+  flex: 0 1 auto;
+  min-height: 0;
+  margin: auto 0;
+  display: flex;
+  align-items: stretch;
+  gap: calc(16 * var(--u));
+}
+
+.pay__src {
+  flex: 0 0 calc(300 * var(--u));
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: calc(10 * var(--u));
+  padding: calc(26 * var(--u));
+  border-radius: var(--r-xl);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  box-shadow: var(--shadow-md);
+  text-align: center;
+  align-items: center;
+}
+
+.pay__src h3 {
+  font-size: calc(27 * var(--u));
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.pay__src p {
+  font-size: calc(18 * var(--u));
+  color: var(--text-3);
+}
+
+.pay__arrow {
+  align-self: center;
+  display: grid;
+  place-items: center;
+  font-size: calc(38 * var(--u));
+  color: var(--gold);
+  flex-shrink: 0;
+}
+
+.pay__dest {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  align-items: stretch;
+  gap: calc(14 * var(--u));
+}
+
+/* IIB va FVV bitta 40% ni bo'lishadi — shuning uchun ular umumiy ramkada
+   turadi va alohida foiz ko'rsatilmaydi. */
+.pay__group {
+  flex: 2.15;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  gap: calc(12 * var(--u));
+  padding: calc(13 * var(--u));
+  border: calc(1.5 * var(--u)) dashed var(--gold);
+  border-radius: var(--r-xl);
+  background: var(--gold-dim);
+}
+
+.pay__group .pay__card {
+  flex: 1 1 calc(50% - 12 * var(--u));
+  min-width: 0;
+}
+
+.pay__group-note {
+  flex-basis: 100%;
+  text-align: center;
+  font-size: calc(15 * var(--u));
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--gold-ink);
+}
+
+.pay__card {
+  flex: 1;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: calc(9 * var(--u));
+  padding: calc(22 * var(--u)) calc(20 * var(--u));
+  border-radius: var(--r-lg);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  box-shadow: var(--shadow-sm);
+}
+
+.pay__card.is-new {
+  border-color: var(--success);
+  border-width: calc(2 * var(--u));
+  box-shadow: var(--shadow-md);
+}
+
+.pay__badge {
+  position: absolute;
+  top: calc(-11 * var(--u));
+  right: calc(14 * var(--u));
+  padding: calc(3 * var(--u)) calc(12 * var(--u));
+  border-radius: 999px;
+  background: var(--success);
+  color: #fff;
+  font-size: calc(13 * var(--u));
+  font-weight: 800;
+  letter-spacing: calc(1 * var(--u));
+  text-transform: uppercase;
+}
+
+.pay__ico {
+  width: calc(48 * var(--u));
+  height: calc(48 * var(--u));
+  border-radius: var(--r-md);
+  display: grid;
+  place-items: center;
+  font-size: calc(24 * var(--u));
+  background: var(--surface-3);
+  border: 1px solid var(--border);
+  color: var(--text-2);
+  flex-shrink: 0;
+}
+
+.pay__card.is-new .pay__ico {
+  background: var(--success-bg);
+  border-color: var(--success-border);
+  color: var(--success);
+}
+
+.pay__card h3 {
+  font-size: calc(23 * var(--u));
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.pay__v {
+  font-size: calc(30 * var(--u));
+  font-weight: 800;
+  color: var(--accent);
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+
+.pay__card p {
+  font-size: calc(17 * var(--u));
+  line-height: 1.38;
+  color: var(--text-3);
+}
+
+/* ================================  06 IIB SHARTNOMALARI (ilgari / endi) == */
+
+.flw__cols {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: calc(22 * var(--u));
+}
+
+.flw__col {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: calc(10 * var(--u));
+  padding: calc(22 * var(--u)) calc(24 * var(--u));
+  border-radius: var(--r-xl);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  box-shadow: var(--shadow-md);
+}
+
+.flw__col--old {
+  background: var(--surface-2);
+}
+
+.flw__col--new {
+  border-color: var(--success);
+  border-width: calc(2 * var(--u));
+  background: linear-gradient(180deg, var(--success-bg), var(--surface) 45%);
+}
+
+.flw__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: calc(12 * var(--u));
+}
+
+.flw__head .pay__badge {
+  position: static;
+}
+
+.flw__tag {
+  font-size: calc(16 * var(--u));
+  font-weight: 800;
+  letter-spacing: calc(2.6 * var(--u));
+  text-transform: uppercase;
+  color: var(--text-3);
+}
+
+.flw__col--new .flw__tag {
+  color: var(--success);
+}
+
+.flw__col > h3 {
+  font-size: calc(30 * var(--u));
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: calc(4 * var(--u));
+}
+
+.flw__step {
+  display: flex;
+  align-items: flex-start;
+  gap: calc(14 * var(--u));
+}
+
+.flw__ico {
+  width: calc(44 * var(--u));
+  height: calc(44 * var(--u));
+  border-radius: var(--r-md);
+  display: grid;
+  place-items: center;
+  font-size: calc(22 * var(--u));
+  background: var(--surface-3);
+  border: 1px solid var(--border);
+  color: var(--text-2);
+  flex-shrink: 0;
+}
+
+.flw__col--new .flw__ico {
+  background: var(--success-bg);
+  border-color: var(--success-border);
+  color: var(--success);
+}
+
+.flw__step h4 {
+  font-size: calc(21 * var(--u));
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.flw__step p {
+  font-size: calc(17 * var(--u));
+  line-height: 1.35;
+  color: var(--text-3);
+  margin-top: calc(2 * var(--u));
+}
+
+.flw__link {
+  display: block;
+  margin-left: calc(21 * var(--u));
+  font-size: calc(20 * var(--u));
+  line-height: 0.8;
+  color: var(--text-4);
+}
+
+.flw__col--new .flw__link {
+  color: var(--success-border);
+}
+
+/* ==================================================  10 YO'L XARITASI  === */
+
+/* flex:0 1 auto — kartochkalar kontentiga qarab o'lchanadi, qolgan bo'sh joy
+   `margin:auto 0` orqali tepa va pastga teng taqsimlanadi. */
+.rm {
+  flex: 0 1 auto;
+  min-height: 0;
+  display: flex;
+  align-items: stretch;
+  gap: calc(12 * var(--u));
+  margin: auto 0;
+}
+
+.rm__item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: calc(12 * var(--u));
+  padding: calc(28 * var(--u)) calc(26 * var(--u));
+  border-radius: var(--r-xl);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  box-shadow: var(--shadow-md);
+}
+
+.rm__item--done { border-top: calc(5 * var(--u)) solid var(--success); }
+.rm__item--now { border-top: calc(5 * var(--u)) solid var(--accent); }
+.rm__item--next { border-top: calc(5 * var(--u)) solid var(--gold); }
+
+.rm__ico {
+  width: calc(54 * var(--u));
+  height: calc(54 * var(--u));
+  border-radius: var(--r-lg);
+  display: grid;
+  place-items: center;
+  font-size: calc(26 * var(--u));
+  border: 1px solid var(--border);
+  background: var(--surface-3);
+  color: var(--text-2);
+}
+
+.rm__item--done .rm__ico {
+  background: var(--success-bg);
+  border-color: var(--success-border);
+  color: var(--success);
+}
+
+.rm__item--now .rm__ico {
+  background: var(--accent-dim);
+  border-color: var(--accent-border);
+  color: var(--accent);
+}
+
+.rm__item--next .rm__ico {
+  background: var(--gold-dim);
+  border-color: var(--gold-border);
+  color: var(--gold-ink);
+}
+
+.rm__tag {
+  font-size: calc(16 * var(--u));
+  font-weight: 800;
+  letter-spacing: calc(2.6 * var(--u));
+  text-transform: uppercase;
+  color: var(--text-3);
+}
+
+.rm__item--done .rm__tag { color: var(--success); }
+.rm__item--now .rm__tag { color: var(--accent); }
+.rm__item--next .rm__tag { color: var(--gold-ink); }
+
+.rm__item h3 {
+  font-size: calc(31 * var(--u));
+  font-weight: 700;
+  line-height: 1.18;
+}
+
+.rm__item p {
+  font-size: calc(19 * var(--u));
+  line-height: 1.45;
+  color: var(--text-2);
+}
+
+.rm__link {
+  align-self: center;
+  font-size: calc(26 * var(--u));
+  color: var(--text-4);
+  flex-shrink: 0;
+}
+
+.rm__thanks {
+  flex-shrink: 0;
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: calc(26 * var(--u));
+  padding-top: calc(26 * var(--u));
+  border-top: 1px solid var(--gold-border);
+}
+
+.rm__thanks b {
+  font-size: calc(66 * var(--u));
+  font-weight: 800;
+  letter-spacing: calc(-2 * var(--u));
+  background: linear-gradient(100deg, #7a5f33, #a8823f 60%, #7a5f33);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.rm__thanks span {
+  font-size: calc(30 * var(--u));
+  font-weight: 300;
+  color: var(--text-2);
+}
+
+/* ======================================================  04 PLATFORMA  === */
+
+.plat {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: calc(12 * var(--u));
+  padding: calc(24 * var(--u)) calc(34 * var(--u)) calc(14 * var(--u));
+}
+
+.plat__head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: calc(24 * var(--u));
+  flex-shrink: 0;
+}
+
+.plat__h1 {
+  font-size: calc(31 * var(--u));
+  font-weight: 800;
+  letter-spacing: calc(-0.4 * var(--u));
+  line-height: 1.1;
+}
+
+.plat__live {
+  display: flex;
+  align-items: center;
+  gap: calc(9 * var(--u));
+  margin-top: calc(4 * var(--u));
+  font-size: calc(15 * var(--u));
+  font-weight: 600;
+  letter-spacing: calc(1.2 * var(--u));
+  text-transform: uppercase;
+  color: var(--text-3);
+}
+
+.plat__live i {
+  width: calc(9 * var(--u));
+  height: calc(9 * var(--u));
+  border-radius: 50%;
+  background: var(--success);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+body.no-anim .plat__live i,
+body.is-print .plat__live i {
+  animation: none;
+}
+
+.plat__date {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: calc(9 * var(--u));
+  padding: calc(8 * var(--u)) calc(16 * var(--u));
+  border-radius: var(--r-sm);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  box-shadow: var(--shadow-sm);
+  font-size: calc(16 * var(--u));
+  font-weight: 600;
+  color: var(--text-2);
+  font-variant-numeric: tabular-nums;
+}
+
+/* --- Umumiy karta --- */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-md);
+  padding: calc(14 * var(--u)) calc(18 * var(--u));
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.card__head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: calc(16 * var(--u));
+}
+
+.card__t {
+  font-size: calc(20 * var(--u));
+  font-weight: 700;
+  letter-spacing: calc(-0.2 * var(--u));
+  flex-shrink: 0;
+}
+
+.card__sub {
+  font-size: calc(14 * var(--u));
+  color: var(--text-3);
+  margin-top: calc(2 * var(--u));
+}
+
+/* --- KPI --- */
+.plat__kpi {
+  flex-shrink: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: calc(12 * var(--u));
+}
+
+.kpi {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-md);
+  padding: calc(11 * var(--u)) calc(18 * var(--u));
+  position: relative;
+  overflow: hidden;
+}
+
+.kpi::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: calc(4 * var(--u));
+}
+
+.kpi--jami::before { background: var(--accent); }
+.kpi--tolab::before { background: var(--success); }
+.kpi--qarz::before { background: var(--danger); }
+
+.kpi__t {
+  font-size: calc(15 * var(--u));
+  font-weight: 700;
+  letter-spacing: calc(1.1 * var(--u));
+  text-transform: uppercase;
+  color: var(--text-3);
+  margin-bottom: calc(3 * var(--u));
+}
+
+.kpi__row {
+  display: flex;
+  align-items: center;
+  gap: calc(18 * var(--u));
+}
+
+.kpi__sep {
+  width: 1px;
+  height: calc(30 * var(--u));
+  background: var(--border);
+}
+
+.kpi__lbl {
+  display: block;
+  font-size: calc(11 * var(--u));
+  letter-spacing: calc(0.8 * var(--u));
+  text-transform: uppercase;
+  color: var(--text-4);
+}
+
+.kpi__n,
+.kpi__v {
+  font-size: calc(25 * var(--u));
+  font-weight: 800;
+  line-height: 1.15;
+  font-variant-numeric: tabular-nums;
+}
+
+.kpi--jami .kpi__v { color: var(--accent); }
+.kpi--tolab .kpi__v { color: var(--success); }
+.kpi--qarz .kpi__v { color: var(--danger); }
+
+/* --- Asosiy maydon: xarita + o'ng panel --- */
+.plat__main {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: calc(12 * var(--u));
+}
+
+.plat__map {
+  position: relative;
+  min-width: 0;
+}
+
+.plat__region {
+  font-size: calc(19 * var(--u));
+  font-weight: 800;
+  color: var(--accent);
+  opacity: 0;
+  transition: opacity 0.25s var(--ease);
+}
+
+.plat__region.is-on { opacity: 1; }
+
+.plat__side {
+  display: flex;
+  flex-direction: column;
+  gap: calc(12 * var(--u));
+  min-height: 0;
+}
+
+/* --- Xarita --- */
+.uz-map {
+  flex: 1;
+  min-height: 0;
+  width: 100%;
+  margin-top: calc(4 * var(--u));
+}
+
+.uz-region {
+  fill: #e2e8f0;
+  stroke: #94a3b8;
+  stroke-width: 1;
+  stroke-linejoin: round;
+  cursor: pointer;
+  transition:
+    fill 0.2s var(--ease),
+    stroke 0.2s var(--ease);
+}
+
+.uz-region:hover {
+  fill: #c7dbf7;
+  stroke: var(--accent);
+  stroke-width: 1.6;
+}
+
+.uz-region.is-active {
+  fill: #a8c8f5;
+  stroke: var(--accent);
+  stroke-width: 2.2;
+}
+
+/* paint-order — yorliq ostidagi oq halqa, xarita ustida ham o'qiladi */
+.uz-label {
+  fill: #334155;
+  font-family: var(--font);
+  font-weight: 600;
+  pointer-events: none;
+  paint-order: stroke;
+  stroke: rgba(255, 255, 255, 0.9);
+  stroke-width: 2.4;
+  stroke-linejoin: round;
+}
+
+.uz-aral {
+  fill: rgba(29, 78, 216, 0.05);
+  stroke: rgba(29, 78, 216, 0.22);
+  stroke-width: 0.8;
+  stroke-dasharray: 3 3;
+}
+
+.uz-aral-t {
+  fill: rgba(29, 78, 216, 0.4);
+  font-family: var(--font);
+}
+
+/* Xarita tooltip */
+.uz-tip {
+  position: absolute;
+  z-index: 20;
+  min-width: calc(230 * var(--u));
+  padding: calc(12 * var(--u)) calc(15 * var(--u));
+  border-radius: var(--r-md);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-lg);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.15s var(--ease);
+}
+
+.uz-tip.is-on { opacity: 1; }
+
+.uz-tip h4 {
+  font-size: calc(15 * var(--u));
+  font-weight: 800;
+  color: var(--accent);
+  padding-bottom: calc(7 * var(--u));
+  margin-bottom: calc(7 * var(--u));
+  border-bottom: 1px solid var(--border);
+}
+
+.uz-tip__r {
+  display: flex;
+  justify-content: space-between;
+  gap: calc(18 * var(--u));
+  font-size: calc(13.5 * var(--u));
+  padding: calc(2.5 * var(--u)) 0;
+}
+
+.uz-tip__r span { color: var(--text-3); }
+.uz-tip__r b { font-weight: 700; font-variant-numeric: tabular-nums; }
+.uz-tip__r b.is-ok { color: var(--success); }
+.uz-tip__r b.is-bad { color: var(--danger); }
+
+/* --- Doughnut --- */
+.plat__donut { flex: 1; min-height: 0; }
+
+.donut {
+  flex: 1;
+  min-height: 0;
+  position: relative;
+  display: grid;
+  place-items: center;
+  margin: calc(4 * var(--u)) 0;
+}
+
+.donut__svg {
+  height: 100%;
+  max-height: calc(190 * var(--u));
+  aspect-ratio: 1;
+}
+
+.donut__seg--0 { stroke: var(--accent); }
+.donut__seg--1 { stroke: #b08a4a; }
+.donut__seg--2 { stroke: var(--success); }
+
+.donut__c {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: calc(2 * var(--u));
+  pointer-events: none;
+}
+
+/* Halqa ichidagi teshik diametri SVG kengligining ~71% i — yorliq shundan
+   tor bo'lishi va kerak bo'lsa ikki qatorga tushishi kerak. */
+.donut__c span {
+  max-width: 58%;
+  text-align: center;
+  font-size: calc(10 * var(--u));
+  line-height: 1.2;
+  letter-spacing: calc(0.3 * var(--u));
+  text-transform: uppercase;
+  color: var(--text-3);
+}
+
+.donut__c b {
+  font-size: calc(24 * var(--u));
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+}
+
+.lgs {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: calc(5 * var(--u));
+}
+
+.lg {
+  display: flex;
+  align-items: center;
+  gap: calc(9 * var(--u));
+  font-size: calc(13 * var(--u));
+  color: var(--text-2);
+}
+
+.lg__sw {
+  width: calc(12 * var(--u));
+  height: calc(12 * var(--u));
+  border-radius: calc(3 * var(--u));
+  flex-shrink: 0;
+}
+
+.lg__sw--0 { background: var(--accent); }
+.lg__sw--1 { background: #b08a4a; }
+.lg__sw--2 { background: var(--success); }
+
+.lg b {
+  margin-left: auto;
+  font-weight: 700;
+  color: var(--text);
+  font-variant-numeric: tabular-nums;
+}
+
+/* --- Qizil chegara --- */
+.plat__red { flex-shrink: 0; }
+
+.red__top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: calc(6 * var(--u));
+}
+
+.red__ico {
+  width: calc(38 * var(--u));
+  height: calc(38 * var(--u));
+  border-radius: var(--r-sm);
+  display: grid;
+  place-items: center;
+  font-size: calc(20 * var(--u));
+  background: var(--danger-bg);
+  border: 1px solid var(--danger-border);
+  color: var(--danger);
+}
+
+.red__pulse {
+  width: calc(11 * var(--u));
+  height: calc(11 * var(--u));
+  border-radius: 50%;
+  background: var(--danger);
+  animation: pulse 2s infinite;
+}
+
+body.no-anim .red__pulse,
+body.is-print .red__pulse { animation: none; }
+
+.red__row {
+  display: flex;
+  align-items: baseline;
+  gap: calc(10 * var(--u));
+  margin-top: calc(4 * var(--u));
+}
+
+.red__row b {
+  font-size: calc(34 * var(--u));
+  font-weight: 800;
+  color: var(--danger);
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+
+.red__row span {
+  font-size: calc(13 * var(--u));
+  color: var(--text-3);
+}
+
+/* --- Avtomatlashtirish oqimi --- */
+.flow { flex-shrink: 0; }
+
+.flow__row {
+  display: flex;
+  align-items: stretch;
+  gap: calc(8 * var(--u));
+  margin-top: calc(8 * var(--u));
+}
+
+.flow__item {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: calc(12 * var(--u));
+  padding: calc(10 * var(--u)) calc(14 * var(--u));
+  border-radius: var(--r-md);
+  border: 1px solid var(--border);
+  background: var(--surface-2);
+}
+
+.flow__item.is-on {
+  border-color: var(--success-border);
+  background: var(--success-bg);
+}
+
+.flow__ico {
+  width: calc(36 * var(--u));
+  height: calc(36 * var(--u));
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: calc(18 * var(--u));
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--text-2);
+  flex-shrink: 0;
+}
+
+.flow__item.is-on .flow__ico {
+  border-color: var(--success-border);
+  color: var(--success);
+}
+
+.flow__txt { flex: 1; min-width: 0; }
+
+.flow__txt span {
+  display: block;
+  font-size: calc(12 * var(--u));
+  color: var(--text-3);
+  line-height: 1.2;
+}
+
+.flow__txt b {
+  font-size: calc(16 * var(--u));
+  font-weight: 700;
+}
+
+.flow__v {
+  flex-shrink: 0;
+  font-size: calc(15 * var(--u));
+  font-weight: 800;
+  color: var(--warn);
+  font-variant-numeric: tabular-nums;
+}
+
+.flow__item.is-on .flow__v { color: var(--success); }
+
+.flow__link {
+  display: grid;
+  place-items: center;
+  font-size: calc(17 * var(--u));
+  color: var(--text-4);
+  flex-shrink: 0;
+}
+
+/* --- Ko'rsatma qatori --- */
+.plat__hint {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: calc(9 * var(--u));
+  font-size: calc(14 * var(--u));
+  color: var(--text-3);
+}
+
+/* Eksportda sichqoncha yo'q — ko'rsatma ham keraksiz */
+body.is-print .plat__hint { visibility: hidden; }
+
+/* --- «Batafsil» tugmasi --- */
+.mbtn {
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: calc(5 * var(--u));
+  padding: calc(6 * var(--u)) calc(12 * var(--u));
+  border-radius: var(--r-sm);
+  border: 1px solid var(--accent-border);
+  background: var(--accent-dim);
+  color: var(--accent);
+  font-family: inherit;
+  font-size: calc(13 * var(--u));
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s var(--ease);
+}
+
+.mbtn:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+.mbtn--wide {
+  margin: calc(10 * var(--u)) 0 0;
+  width: 100%;
+  justify-content: center;
+}
+
+/* --- Modal oynasi -------------------------------------------------------
+   Slayd ichida joylashadi — 16:9 sahnadan tashqariga chiqmaydi. */
+.pm {
+  position: absolute;
+  inset: 0;
+  z-index: 60;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: calc(34 * var(--u));
+  background: rgba(15, 23, 42, 0.42);
+  backdrop-filter: blur(3px);
+}
+
+.pm.is-open { display: flex; }
+
+.pm__box {
+  width: 100%;
+  max-height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+}
+
+.pm--wide .pm__box { max-width: calc(1780 * var(--u)); }
+
+.pm__head {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: calc(20 * var(--u));
+  padding: calc(14 * var(--u)) calc(22 * var(--u));
+  border-bottom: 1px solid var(--border);
+  background: var(--surface-2);
+}
+
+.pm__head h4 {
+  font-size: calc(22 * var(--u));
+  font-weight: 700;
+}
+
+.pm__x {
+  flex-shrink: 0;
+  width: calc(36 * var(--u));
+  height: calc(36 * var(--u));
+  display: grid;
+  place-items: center;
+  font-size: calc(19 * var(--u));
+  border-radius: var(--r-sm);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text-2);
+  cursor: pointer;
+  transition: all 0.2s var(--ease);
+}
+
+.pm__x:hover {
+  border-color: var(--danger-border);
+  color: var(--danger);
+}
+
+.pm__body {
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+  padding: calc(16 * var(--u)) calc(22 * var(--u)) calc(20 * var(--u));
+}
+
+/* --- Modal jadvali --- */
+.pm__tbl {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: calc(14 * var(--u));
+}
+
+.pm__tbl th {
+  position: sticky;
+  top: calc(-16 * var(--u));
+  z-index: 1;
+  text-align: left;
+  padding: calc(11 * var(--u)) calc(12 * var(--u));
+  background: var(--surface-3);
+  border-bottom: 1px solid var(--border);
+  font-size: calc(12.5 * var(--u));
+  font-weight: 800;
+  letter-spacing: calc(0.6 * var(--u));
+  text-transform: uppercase;
+  color: var(--text-3);
+  white-space: nowrap;
+}
+
+.pm__tbl td {
+  padding: calc(9 * var(--u)) calc(12 * var(--u));
+  border-bottom: 1px solid var(--border-soft);
+  color: var(--text-2);
+  vertical-align: middle;
+}
+
+.pm__tbl tbody tr:nth-child(even) { background: var(--surface-2); }
+.pm__tbl tbody tr:hover { background: var(--accent-dim); }
+
+.pm__tbl .n { color: var(--text-4); width: calc(46 * var(--u)); }
+.pm__tbl .b { color: var(--text); font-weight: 700; }
+.pm__tbl .c { text-align: center; }
+.pm__tbl .dim { color: var(--text-3); }
+.pm__tbl .mono { font-variant-numeric: tabular-nums; }
+.pm__tbl .accent { color: var(--accent); font-weight: 600; }
+.pm__tbl .ok { color: var(--success); font-weight: 700; }
+
+.pm__tbl .badge {
+  display: inline-block;
+  padding: calc(3 * var(--u)) calc(9 * var(--u));
+  border-radius: var(--r-sm);
+  background: rgba(190, 18, 60, 0.08);
+  border: 1px solid var(--danger-border);
+  color: var(--danger);
+  font-weight: 800;
+  font-size: calc(13 * var(--u));
+}
+
+/* --- Viloyatlar diagrammasi (SVG) --- */
+.rc {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.rc__grid { stroke: var(--border); stroke-width: 1; }
+.rc__axis { stroke: var(--border-strong); stroke-width: 1.2; }
+
+.rc__yl,
+.rc__xl,
+.rc__v {
+  font-family: var(--font);
+  fill: var(--text-3);
+}
+
+.rc__yl { font-size: 13px; }
+.rc__xl { font-size: 14px; font-weight: 600; fill: var(--text-2); }
+.rc__v { font-size: 12.5px; font-weight: 700; fill: var(--text-2); }
+
+.rc__b--0 { fill: var(--accent); }
+.rc__b--1 { fill: #b08a4a; }
+.rc__b--2 { fill: var(--success); }
+
+.rc__lg {
+  display: flex;
+  justify-content: center;
+  gap: calc(34 * var(--u));
+  margin-bottom: calc(10 * var(--u));
+}
+
+.rc__lg span {
+  display: inline-flex;
+  align-items: center;
+  gap: calc(9 * var(--u));
+  font-size: calc(15 * var(--u));
+  font-weight: 600;
+  color: var(--text-2);
+}
+
+.rc__yt {
+  text-align: center;
+  font-size: calc(14 * var(--u));
+  color: var(--text-3);
+  margin-top: calc(4 * var(--u));
+}

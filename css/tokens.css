@@ -1,50 +1,88 @@
 /* ==========================================================================
-   Dizayn tokenlari — prezintation/slide1.html va slide2.html dan meros
+   Dizayn tokenlari — OCHIQ ("hujjat") mavzu
+
+   Rol taqsimoti:
+     Oltin (--gold)      brend belgisi: slayd tepasidagi chiziq, kicker,
+                         footer raqami, to'ldirilgan CTA. Bezak.
+     Ko'k  (--accent)    interaktiv holat: fokus, tanlangan qator, havola.
+     Matn uchun oltin    --gold-ink (#8a6d3b) — oq fonda 4.9:1.
+                         --gold (#c5a572) oq fonda atigi 2.3:1 beradi,
+                         shuning uchun u matnga HECH QACHON qo'llanmaydi.
+
+   Barcha semantik ranglar oq fonda kamida 4.5:1 kontrast beradi (WCAG AA).
    ========================================================================== */
 
 :root {
-  /* Sirtlar */
-  --navy: #0a1628;
-  --navy-deep: #060f1c;
-  --surface: #111827;
-  --surface-2: #0f1d2e;
-  --surface-3: #1a2332;
-  --border: #1e293b;
-  --border-soft: rgba(255, 255, 255, 0.08);
-  --glass: rgba(30, 41, 59, 0.42);
+  /* --- Sirtlar ---------------------------------------------------------- */
+  --page: #e2e8f0; /* sahna tashqarisidagi fon      */
+  --stage: #f1f5f9; /* slayd foni                    */
+  --surface: #ffffff; /* karta                         */
+  --surface-2: #f8fafc; /* ichki panel                   */
+  --surface-3: #eef2f7; /* bosilgan / ikkilamchi holat   */
 
-  /* Brend */
-  --gold: #c5a572;
-  --gold-dim: rgba(197, 165, 114, 0.12);
-  --gold-border: rgba(197, 165, 114, 0.22);
+  --border: #cbd5e1;
+  --border-soft: rgba(15, 23, 42, 0.1);
+  --border-strong: #94a3b8;
+  --glass: rgba(255, 255, 255, 0.72);
 
-  /* Semantik — appeal_types enum ga qat'iy bog'langan */
-  --st-new: #38bdf8; /* new          */
-  --st-review: #f59e0b; /* reviewing    */
-  --st-reject: #f43f5e; /* rejected     */
-  --st-sent: #27ae60; /* contract_sent */
+  /* Oltin chip/tugma ustidagi matn — sof qora emas, iliqroq */
+  --on-gold: #2a2010;
 
-  --danger: #d45050;
-  --danger-bg: rgba(200, 50, 50, 0.08);
-  --danger-border: rgba(200, 70, 70, 0.28);
+  /* --- Soyalar ---------------------------------------------------------
+     Ochiq fonda faqat chegara yetarli emas: karta "yopishib" qoladi.
+     Soyalar juda yumshoq — proyektorda kir dog' bo'lib ko'rinmasligi kerak. */
+  --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.06);
+  --shadow-md:
+    0 1px 3px rgba(15, 23, 42, 0.06), 0 calc(4 * var(--u)) calc(12 * var(--u)) rgba(15, 23, 42, 0.05);
+  --shadow-lg:
+    0 1px 3px rgba(15, 23, 42, 0.05), 0 calc(12 * var(--u)) calc(32 * var(--u)) rgba(15, 23, 42, 0.09);
 
-  /* Bugungi holatni ko'rsatish uchun — qizil emas, muloyimroq kehribar rang.
+  /* --- Brend ------------------------------------------------------------ */
+  --gold: #c5a572; /* faqat to'ldirish va chiziq   */
+  --gold-ink: #8a6d3b; /* matn uchun — 4.9:1           */
+  --gold-dim: rgba(197, 165, 114, 0.14);
+  --gold-border: rgba(197, 165, 114, 0.5);
+
+  /* --- Aksent (interaktiv) ---------------------------------------------- */
+  --accent: #1d4ed8; /* 6.7:1                        */
+  --accent-2: #2563eb;
+  --accent-dim: rgba(29, 78, 216, 0.08);
+  --accent-border: rgba(29, 78, 216, 0.3);
+
+  /* --- Semantik — appeal_types enum ga qat'iy bog'langan ---------------- */
+  --st-new: #0369a1; /* new           — 5.9:1        */
+  --st-review: #b45309; /* reviewing     — 5.0:1        */
+  --st-reject: #be123c; /* rejected      — 6.0:1        */
+  --st-sent: #15803d; /* contract_sent — 5.0:1        */
+
+  --danger: #be123c;
+  --danger-bg: rgba(190, 18, 60, 0.07);
+  --danger-border: rgba(190, 18, 60, 0.28);
+
+  /* Bugungi holatni ko'rsatish uchun — qizil emas, muloyimroq kehribar.
      Davlat idorasi oldida qizil «ayblov» kabi o'qiladi. */
-  --warn: #e3a857;
-  --warn-soft: #f0c489;
-  --warn-bg: rgba(227, 168, 87, 0.1);
-  --warn-border: rgba(227, 168, 87, 0.3);
-  --success: #27ae60;
-  --success-bright: #2ecc71;
-  --info: #38bdf8;
+  --warn: #b45309;
+  --warn-soft: #92400e;
+  --warn-bg: rgba(180, 83, 9, 0.07);
+  --warn-border: rgba(180, 83, 9, 0.26);
 
-  /* Matn */
-  --text: #f8fafc;
-  --text-2: #94a3b8;
-  --text-3: rgba(255, 255, 255, 0.42);
-  --text-4: rgba(255, 255, 255, 0.22);
+  --success: #15803d;
+  --success-bright: #166534;
+  --success-bg: rgba(21, 128, 61, 0.07);
+  --success-border: rgba(21, 128, 61, 0.26);
 
-  /* Slayd geometriyasi — 16:9, 1920x1080 asosda */
+  --info: #0369a1;
+
+  /* --- Matn ------------------------------------------------------------- */
+  --text: #0f172a; /* asosiy      — 17.9:1         */
+  --text-2: #475569; /* ikkilamchi  —  7.5:1         */
+  --text-3: #64748b; /* uchlamchi   —  4.8:1         */
+  --text-4: #94a3b8; /* eng past — faqat yorliq/bezak */
+
+  /* Kartalar burchagidagi "ruhiy" raqamlar (01, 02, 03) */
+  --ghost: rgba(15, 23, 42, 0.06);
+
+  /* --- Slayd geometriyasi — 16:9, 1920x1080 asosda ---------------------- */
   --slide-w: 1920;
   --slide-h: 1080;
 
@@ -60,8 +98,9 @@
   --r-lg: calc(16 * var(--u));
   --r-xl: calc(24 * var(--u));
 
-  --font: "Inter", "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto,
-    "Helvetica Neue", Arial, sans-serif;
+  --font:
+    "Inter", "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", Arial,
+    sans-serif;
   --mono: "JetBrains Mono", "Cascadia Mono", Consolas, "Courier New", monospace;
 
   --ease: cubic-bezier(0.4, 0, 0.2, 1);

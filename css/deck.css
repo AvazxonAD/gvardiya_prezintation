@@ -13,7 +13,7 @@ body {
   width: 100%;
   height: 100%;
   overflow: hidden;
-  background: var(--navy-deep);
+  background: var(--page);
   font-family: var(--font);
   color: var(--text);
   -webkit-font-smoothing: antialiased;
@@ -28,8 +28,10 @@ body {
   max-width: 100vw;
   max-height: 100vh;
   overflow: hidden;
-  background: var(--navy);
-  box-shadow: 0 0 calc(80 * var(--u)) rgba(0, 0, 0, 0.6);
+  background: var(--stage);
+  box-shadow:
+    0 0 0 1px var(--border-soft),
+    0 calc(10 * var(--u)) calc(50 * var(--u)) rgba(15, 23, 42, 0.14);
 }
 
 /* --- Slayd --------------------------------------------------------------- */
@@ -39,7 +41,7 @@ body {
   display: none;
   flex-direction: column;
   padding: 0;
-  background: var(--navy);
+  background: var(--stage);
 }
 
 .slide.is-active {
@@ -97,7 +99,8 @@ body.is-print #lang {
 .slide__foot {
   flex-shrink: 0;
   height: calc(46 * var(--u));
-  background: rgba(0, 0, 0, 0.25);
+  background: var(--surface-3);
+  border-top: 1px solid var(--border-soft);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -107,12 +110,12 @@ body.is-print #lang {
 }
 
 .slide__foot-l {
-  color: var(--text-4);
+  color: var(--text-3);
   text-transform: uppercase;
 }
 
 .slide__foot-r {
-  color: var(--gold);
+  color: var(--gold-ink);
   font-weight: 600;
   font-variant-numeric: tabular-nums;
 }
@@ -151,8 +154,9 @@ body.is-print #lang {
   width: calc(38 * var(--u));
   height: calc(38 * var(--u));
   border-radius: 50%;
-  border: 1px solid var(--border-soft);
-  background: rgba(15, 29, 46, 0.85);
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: var(--shadow-sm);
   color: var(--text-2);
   cursor: pointer;
   display: grid;
@@ -163,7 +167,7 @@ body.is-print #lang {
 
 .nav-btn:hover:not(:disabled) {
   border-color: var(--gold-border);
-  color: var(--gold);
+  color: var(--gold-ink);
   transform: translateY(calc(-2 * var(--u)));
 }
 
@@ -184,12 +188,13 @@ body.is-print #lang {
   right: calc(24 * var(--u));
   z-index: 50;
   display: flex;
-  border: 1px solid var(--border-soft);
+  border: 1px solid var(--border);
   border-radius: 999px;
   overflow: hidden;
-  background: rgba(10, 22, 40, 0.8);
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: var(--shadow-sm);
   backdrop-filter: blur(8px);
-  opacity: 0.2;
+  opacity: 0.35;
   transition: opacity 0.3s var(--ease);
 }
 
@@ -213,7 +218,7 @@ body.is-print #lang {
 
 .lang-btn.is-on {
   background: var(--gold);
-  color: var(--navy);
+  color: var(--on-gold);
 }
 
 /* --- Overview (Esc) ------------------------------------------------------ */
@@ -221,7 +226,7 @@ body.is-print #lang {
   position: fixed;
   inset: 0;
   z-index: 100;
-  background: rgba(3, 8, 18, 0.94);
+  background: rgba(241, 245, 249, 0.95);
   backdrop-filter: blur(10px);
   display: none;
   padding: 3vh 3vw;
@@ -236,7 +241,7 @@ body.is-print #lang {
   font-size: 1rem;
   letter-spacing: 2px;
   text-transform: uppercase;
-  color: var(--gold);
+  color: var(--gold-ink);
   margin-bottom: 1.4rem;
   text-align: center;
 }
@@ -251,6 +256,7 @@ body.is-print #lang {
   border: 1px solid var(--border);
   border-radius: 10px;
   background: var(--surface);
+  box-shadow: var(--shadow-sm);
   padding: 14px;
   cursor: pointer;
   transition: all 0.2s var(--ease);
@@ -264,7 +270,8 @@ body.is-print #lang {
 }
 
 .ov-item:hover {
-  border-color: var(--gold-border);
+  border-color: var(--gold);
+  box-shadow: var(--shadow-md);
   transform: translateY(-3px);
 }
 
@@ -276,7 +283,7 @@ body.is-print #lang {
 .ov-num {
   font-size: 0.68rem;
   font-weight: 700;
-  color: var(--gold);
+  color: var(--gold-ink);
   letter-spacing: 1px;
 }
 
@@ -297,8 +304,9 @@ body.is-print #lang {
   gap: calc(16 * var(--u));
   padding: calc(9 * var(--u)) calc(18 * var(--u));
   border-radius: 999px;
-  background: rgba(10, 22, 40, 0.9);
-  border: 1px solid var(--border-soft);
+  background: rgba(255, 255, 255, 0.94);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
   backdrop-filter: blur(8px);
   font-size: calc(12.5 * var(--u));
   color: var(--text-3);
@@ -317,6 +325,6 @@ body.is-print #lang {
   border-radius: calc(4 * var(--u));
   background: var(--surface-3);
   border: 1px solid var(--border);
-  color: var(--gold);
+  color: var(--gold-ink);
   margin-right: calc(5 * var(--u));
 }

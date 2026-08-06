@@ -1,7 +1,7 @@
 {
   "name": "prezintation",
   "version": "1.0.0",
-  "description": "Tadbir-Hisob platformasi taqdimoti — 7 slaydli interaktiv deck (platforma + murojaatlar moduli)",
+  "description": "Tadbir-Hisob platformasi taqdimoti — 8 slaydli interaktiv deck (platforma + murojaatlar moduli), ochiq mavzu, ikki tilli",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
